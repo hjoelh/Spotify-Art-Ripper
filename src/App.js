@@ -6,6 +6,8 @@ function App() {
 
   const spotifyApi = new SpotifyWebApi();
 
+  const regex1 = /(?<=\/).{22}(?=\?)/g
+
   const getHashParams = () => {
     var hashParams = {};
     var e, r = /([^&;=]+)=?([^&;]*)/g,
@@ -25,6 +27,7 @@ function App() {
     image: ''
   })
   const [track, setTrack] = React.useState('')
+  const [url, setUrl] = React.useState('')
 
   if (params.access_token) {
     spotifyApi.setAccessToken(params.access_token)
@@ -33,7 +36,7 @@ function App() {
 
 
   const getNowPlaying = () => {
-    spotifyApi.getTrack('3zmEykbQ6rlvYz4qJHdWMC') 
+    spotifyApi.getTrack(url.match(regex1)) 
       .then(res => {
         setNowPlaying({
            artist: res.body.artists[0].name,
@@ -42,6 +45,10 @@ function App() {
         })
       })
   }
+
+const URLinput = (e) => {
+  setUrl(e.target.value)
+}
 
 
 
@@ -61,8 +68,11 @@ function App() {
 
 
 
-      <div className='nowPlayingBtn' onClick={getNowPlaying}>Click to get now playing</div>
+      <div className='nowPlayingBtn' onClick={getNowPlaying}>Search</div>
 
+
+      <input placeholder='paste url here' className='nowPlayingBtn' type="text" autoFocus onChange={URLinput} value={url}/>
+   
 
     </div>
 

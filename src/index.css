@@ -34,3 +34,10 @@ div {
   border: 2px solid;
   display: inline-block;
 }
+
+
+
+input {
+  display: block;
+  width: 500px
+}
