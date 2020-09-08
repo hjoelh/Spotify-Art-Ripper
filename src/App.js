@@ -9,8 +9,8 @@ function App() {
   const [url, setUrl] = React.useState('')
 
   const [nowPlaying, setNowPlaying] = React.useState({
-    song: 'paste a url',
-    artist: 'below',
+    song: 'Spotify Art',
+    artist: 'Ripper ',
     image: ''
   })
 
@@ -48,11 +48,14 @@ var client_secret = process.env.REACT_APP_SECRET;
            json: true
          };
          request.get(options, function(error, response, body) {
-           setNowPlaying({
-                     artist: body.artists[0].name,
-                    song: body.album.name,
-                    image: body.album.images[0].url 
-                  })
+          if (response.statusCode === 200) {
+            setNowPlaying({
+              artist: body.artists[0].name,
+             song: body.album.name + (' by'),
+             image: body.album.images[0].url 
+           })
+          }
+          
 
          });
        }
@@ -60,17 +63,22 @@ var client_secret = process.env.REACT_APP_SECRET;
    
    }
 
+
+
+
   return (
     <div className="App">
 
-      <div className='nowplaying'>{nowPlaying.song} by {nowPlaying.artist}</div>
+    <div className="main">
 
-      <div> <img src={nowPlaying.image} alt="album art"/> </div>
+      <div className='songArtist'>{nowPlaying.song} {nowPlaying.artist}</div>
 
-      <div className='nowPlayingBtn'  onClick={ () => pingSpotify(url.match(regex1))} >Search</div>
+      <img className='img' src={nowPlaying.image} alt=""/> 
 
-      <input placeholder='paste url here' className='nowPlayingBtn' type="text" autoFocus onChange={URLinput} value={url}/>
+      <div className='searchBtn'  onClick={ () => pingSpotify(url.match(regex1))} >Search</div>
 
+      <input placeholder=' track url' className='userInput' type="text" autoFocus onChange={URLinput} value={url}/>
+</div>
     </div>
 
   );

@@ -1,5 +1,7 @@
 body {
-  margin: 0;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -7,37 +9,52 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-
-div {
-  text-align: center;
-  margin: 25px
-
-}
-
-
-.nowplaying {
-  padding: 5px;
-  font-weight: bolder;
-  font-size: 35px;
-}
-
-
-.nowPlayingBtn {
-  padding: 5px;
+.songArtist {
+  margin-top: 25px;
+  margin-bottom: 20px;
+  padding: 10px;
   font-weight: bolder;
   font-size: 25px;
-  border: 2px solid;
-  display: inline-block;
+  border: 1px solid;
+  color: white;
+  background: black
+  
+}
+
+
+.searchBtn {
+  cursor: pointer;
+  padding: 5px;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  font-weight: bolder;
+  font-size: 25px;
+  background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673);
+  box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+  color: white;
+  background-size: 150% 100%;
+  transition: all .4s ease-in-out;
+}
+
+.searchBtn:hover {
+  background-position: 100% 50%;
+  transition: all .4s ease-in-out;
+}
+
+.userInput {
+  padding: 2px;
+  margin: 0px;
+  text-align: center;
+  font-size: 1em
+}
+
+
+.main {
+  width: 640px;
+  margin: auto;
+  text-align: center;
 }
 
 
 
-input {
-  display: block;
-  width: 500px
-}
+
