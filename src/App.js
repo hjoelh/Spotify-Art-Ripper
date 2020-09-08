@@ -3,7 +3,7 @@ const request = require('request');
 
 function App() {
 
-  const regex1 = /(?<=\/).{22}(?=\?)/g
+  const regex1 = /.{22}(?=\?)/g
 
   const [track, setTrack] = React.useState('')
   const [url, setUrl] = React.useState('')
