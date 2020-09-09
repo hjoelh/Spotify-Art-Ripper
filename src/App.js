@@ -5,7 +5,6 @@ function App() {
 
   const regex1 = /.{22}(?=\?)/g
 
-  const [track, setTrack] = React.useState('')
   const [url, setUrl] = React.useState('')
 
   const [nowPlaying, setNowPlaying] = React.useState({
@@ -77,8 +76,15 @@ var client_secret = process.env.REACT_APP_SECRET;
 
       <div className='searchBtn'  onClick={ () => pingSpotify(url.match(regex1))} >Search</div>
 
-      <input placeholder=' track url' className='userInput' type="text" autoFocus onChange={URLinput} value={url}/>
-</div>
+      <input placeholder='track url' 
+             className={nowPlaying.image ? 'userInput' : 'userInputLanding' } 
+             type="text" 
+             autoFocus 
+             onChange={URLinput} 
+             value={url} 
+      />
+      
+    </div>
     </div>
 
   );
