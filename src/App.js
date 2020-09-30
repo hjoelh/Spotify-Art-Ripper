@@ -1,12 +1,12 @@
 import React from 'react';
 const request = require('request');
 
-function App() {
-
+const App = () => {
+  const client_id = process.env.REACT_APP_ID; 
+  const client_secret = process.env.REACT_APP_SECRET;   
   const regex1 = /.{22}(?=\?)/g
 
   const [url, setUrl] = React.useState('')
-
   const [nowPlaying, setNowPlaying] = React.useState({
     song: 'Spotify Art',
     artist: 'Ripper ',
@@ -15,14 +15,9 @@ function App() {
 
   const URLinput = (e) => {
     setUrl(e.target.value)
-    console.log(url)
   }
 
-var client_id = process.env.REACT_APP_ID; 
-var client_secret = process.env.REACT_APP_SECRET; 
-
-
-  var authOptions = {
+  let authOptions = {
     url: 'https://accounts.spotify.com/api/token',
     headers: {
       'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
@@ -34,10 +29,8 @@ var client_secret = process.env.REACT_APP_SECRET;
    };
    
    const pingSpotify = ur => {
-
    request.post(authOptions, function(error, response, body) {
        if (!error && response.statusCode === 200) {
-      
          var token = body.access_token;
          var options = {
            url: 'https://api.spotify.com/v1/tracks/'+ ur,
@@ -54,28 +47,17 @@ var client_secret = process.env.REACT_APP_SECRET;
              image: body.album.images[0].url 
            })
           }
-          
-
          });
        }
       });
-   
    }
-
-
-
 
   return (
     <div className="App">
-
     <div className="main">
-
       <div className='songArtist'>{nowPlaying.song} {nowPlaying.artist}</div>
-
       <img className='img' src={nowPlaying.image} alt=""/> 
-
       <div className='searchBtn'  onClick={ () => pingSpotify(url.match(regex1))} >Search</div>
-
       <input placeholder='track url' 
              className={nowPlaying.image ? 'userInput' : 'userInputLanding' } 
              type="text" 
@@ -83,10 +65,8 @@ var client_secret = process.env.REACT_APP_SECRET;
              onChange={URLinput} 
              value={url} 
       />
-      
     </div>
     </div>
-
   );
 }
 

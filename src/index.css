@@ -21,7 +21,6 @@ body {
   
 }
 
-
 .searchBtn {
   cursor: pointer;
   padding: 5px;
@@ -58,13 +57,11 @@ body {
 
 }
 
-
 .main {
   max-width: 640px;
   margin: auto;
   text-align: center;
 }
-
 
 .img {
   width: 100%;
