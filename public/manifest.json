@@ -1,6 +1,6 @@
 {
-  "short_name": "Spotify Art Ripper",
-  "name": "Spotfiy Art Ripper",
+  "short_name": "Spotify Artwork Downloader",
+  "name": "Spotify Artwork Downloader",
   "icons": [
     {
       "src": "favicon.ico",
